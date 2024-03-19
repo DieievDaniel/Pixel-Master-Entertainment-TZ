@@ -5,20 +5,23 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
-    private float horizontalInput, verticalInput;
-    private float currentSteerAngle, currentBrakeForce;
-    private bool isBreaking;
+    protected float horizontalInput, verticalInput;
+    protected float currentSteerAngle, currentBrakeForce;
+    protected bool isBreaking;
 
     // Settings
-    [SerializeField] private float motorForce, brakeForce, maxSteerAngle;
+    [SerializeField] protected float motorForce, brakeForce, maxSteerAngle;
 
     // Wheel Colliders
-    [SerializeField] private WheelCollider frontLeftWheelCollider, frontRightWheelCollider;
-    [SerializeField] private WheelCollider rearLeftWheelCollider, rearRightWheelCollider;
+    [SerializeField] protected WheelCollider frontLeftWheelCollider, frontRightWheelCollider;
+    [SerializeField] protected WheelCollider rearLeftWheelCollider, rearRightWheelCollider;
 
     // Wheels
-    [SerializeField] private Transform frontLeftWheelTransform, frontRightWheelTransform;
-    [SerializeField] private Transform rearLeftWheelTransform, rearRightWheelTransform;
+    [SerializeField] protected Transform frontLeftWheelTransform, frontRightWheelTransform;
+    [SerializeField] protected Transform rearLeftWheelTransform, rearRightWheelTransform;
+
+    
+
 
     public void AccelerateDown()
     {
@@ -75,7 +78,7 @@ public class CarController : MonoBehaviour
         UpdateWheels();
     }
 
-    private void HandleMotor()
+    protected virtual void HandleMotor()
     {
         frontLeftWheelCollider.motorTorque = -verticalInput * motorForce;
         frontRightWheelCollider.motorTorque = -verticalInput * motorForce;
@@ -105,6 +108,7 @@ public class CarController : MonoBehaviour
         UpdateSingleWheel(rearLeftWheelCollider, rearLeftWheelTransform);
     }
 
+   
     private void UpdateSingleWheel(WheelCollider wheelCollider, Transform wheelTransform)
     {
         Vector3 pos;

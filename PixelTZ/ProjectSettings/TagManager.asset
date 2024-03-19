@@ -8,6 +8,7 @@ TagManager:
   - Accelerate
   - SteerLeft
   - SteerRight
+  - Car
   layers:
   - Default
   - TransparentFX
