@@ -1,26 +1,17 @@
 using UnityEngine;
 
-public class CarCameraFollow : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
-    void Update()
+    public Transform target; 
+    public float rotateSpeed;
+
+    private void Update()
     {
-        // Получаем выбранную машину из PlayerPrefs
-        int selectedCarIndex = PlayerPrefs.GetInt("SelectedCarIndex", 0);
-        GameObject[] cars = GameObject.FindGameObjectsWithTag("Car"); // Предполагаем, что у машин установлен тег "Car"
-        if (selectedCarIndex >= 0 && selectedCarIndex < cars.Length)
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
-            // Получаем трансформ выбранной машины
-            Transform target = cars[selectedCarIndex].transform;
-
-            // Устанавливаем позицию камеры как позиция цели с учетом смещения
-            transform.position = target.position - target.forward * 8f + Vector3.up * 2f;
-
-            // Направляем камеру на цель
-            transform.LookAt(target.position + Vector3.up * 2f);
-        }
-        else
-        {
-            Debug.LogWarning("Selected car index is out of range!");
+            Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
+            float rotationX = touchDeltaPosition.x * rotateSpeed * Time.deltaTime;
+            transform.RotateAround(target.position, Vector3.up, rotationX);
         }
     }
 }

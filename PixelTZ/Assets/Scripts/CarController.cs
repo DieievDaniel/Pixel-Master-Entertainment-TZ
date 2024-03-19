@@ -5,20 +5,26 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
-    protected float horizontalInput, verticalInput;
-    protected float currentSteerAngle, currentBrakeForce;
+    protected float horizontalInput;
+    protected float verticalInput;
+    protected float currentSteerAngle;
+    protected float currentBrakeForce;
     protected bool isBreaking;
 
     // Settings
-    [SerializeField] protected float motorForce, brakeForce, maxSteerAngle;
-
+    [SerializeField] protected float motorForce;
+    [SerializeField] protected float brakeForce;
+    [SerializeField] protected float maxSteerAngle;
     // Wheel Colliders
-    [SerializeField] protected WheelCollider frontLeftWheelCollider, frontRightWheelCollider;
-    [SerializeField] protected WheelCollider rearLeftWheelCollider, rearRightWheelCollider;
-
+    [SerializeField] protected WheelCollider frontLeftWheelCollider;
+    [SerializeField] protected WheelCollider frontRightWheelCollider;
+    [SerializeField] protected WheelCollider rearLeftWheelCollider;
+    [SerializeField] protected WheelCollider rearRightWheelCollider;
     // Wheels
-    [SerializeField] protected Transform frontLeftWheelTransform, frontRightWheelTransform;
-    [SerializeField] protected Transform rearLeftWheelTransform, rearRightWheelTransform;
+    [SerializeField] protected Transform frontLeftWheelTransform;
+    [SerializeField] protected Transform frontRightWheelTransform;
+    [SerializeField] protected Transform rearLeftWheelTransform;
+    [SerializeField] protected Transform rearRightWheelTransform;
 
     
 
