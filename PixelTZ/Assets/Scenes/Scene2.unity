@@ -4203,7 +4203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.1, y: 0.5, z: 0.3}
-  ShoulderOffset: {x: 0.11, y: 0.02, z: -1.37}
+  ShoulderOffset: {x: -0.02, y: 0.36, z: -3.38}
   VerticalArmLength: 0.4
   CameraSide: 1
   CameraDistance: 2
@@ -4629,7 +4629,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -75.881, y: 5.308, z: -91.34093}
+  m_LocalPosition: {x: -75.83, y: 5.6210003, z: -89.685}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9158,7 +9158,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1895511951
 AudioListener:
   m_ObjectHideFlags: 0
@@ -9227,7 +9227,7 @@ Transform:
   m_GameObject: {fileID: 1895511950}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -75.881, y: 5.308, z: -91.34093}
+  m_LocalPosition: {x: -75.751, y: 5.6480002, z: -89.33093}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9992,7 +9992,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8764951427265734773, guid: 644eb51a6deca834d9540ba0e1f1e264, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8764951427265734773, guid: 644eb51a6deca834d9540ba0e1f1e264, type: 3}
       propertyPath: m_TagString
@@ -10050,7 +10050,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1605107909437496852, guid: 1a864e4f9c3e1124a8bb9c48735e7fe8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1605107909437496852, guid: 1a864e4f9c3e1124a8bb9c48735e7fe8, type: 3}
       propertyPath: m_TagString
