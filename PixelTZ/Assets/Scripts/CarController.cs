@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CarController : MonoBehaviour
 {
@@ -26,14 +27,15 @@ public class CarController : MonoBehaviour
     [SerializeField] protected Transform rearLeftWheelTransform;
     [SerializeField] protected Transform rearRightWheelTransform;
 
-    
-
+    [SerializeField] protected float driftTorque = 2000f; // Торк для дрифта
+    [SerializeField] protected float driftControl = 2f;
 
     public void AccelerateDown()
     {
         verticalInput = 1f;
         isBreaking = false;
     }
+
     public void AccelerateUp()
     {
         verticalInput = 0f;
@@ -44,6 +46,7 @@ public class CarController : MonoBehaviour
     {
         isBreaking = true;
     }
+
     public void BrakeUp()
     {
         isBreaking = false;
@@ -53,6 +56,7 @@ public class CarController : MonoBehaviour
     {
         horizontalInput = -1f;
     }
+
     public void SteerLeftUp()
     {
         horizontalInput = 0f;
@@ -62,6 +66,7 @@ public class CarController : MonoBehaviour
     {
         horizontalInput = 1f;
     }
+
     public void SteerRightUp()
     {
         horizontalInput = 0f;
@@ -71,6 +76,7 @@ public class CarController : MonoBehaviour
     {
         verticalInput = -1f;
     }
+
     public void ReleaseSteeringUp()
     {
         verticalInput = 0f;
@@ -114,7 +120,6 @@ public class CarController : MonoBehaviour
         UpdateSingleWheel(rearLeftWheelCollider, rearLeftWheelTransform);
     }
 
-   
     private void UpdateSingleWheel(WheelCollider wheelCollider, Transform wheelTransform)
     {
         Vector3 pos;
@@ -122,5 +127,19 @@ public class CarController : MonoBehaviour
         wheelCollider.GetWorldPose(out pos, out rot);
         wheelTransform.rotation = rot;
         wheelTransform.position = pos;
+    }
+
+    private void ApplyDrift()
+    {    
+        Vector3 localVelocity = transform.InverseTransformDirection(GetComponent<Rigidbody>().velocity);
+
+        float forwardSpeed = localVelocity.z;
+
+        float sideSpeed = localVelocity.x;
+
+        if (Mathf.Abs(currentSteerAngle) > 0 && Mathf.Abs(forwardSpeed) < 1)
+        {
+            GetComponent<Rigidbody>().AddForce(transform.right * sideSpeed * driftTorque * driftControl, ForceMode.Acceleration);
+        }
     }
 }
