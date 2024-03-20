@@ -9,6 +9,7 @@ TagManager:
   - SteerLeft
   - SteerRight
   - Car
+  - Win
   layers:
   - Default
   - TransparentFX

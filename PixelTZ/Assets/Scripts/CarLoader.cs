@@ -23,5 +23,7 @@ public class CarLoader : MonoBehaviour
         {
             cameras[i].gameObject.SetActive(i == selectedCarIndex);
         }
+
+        Time.timeScale = 1f;
     }
 }
